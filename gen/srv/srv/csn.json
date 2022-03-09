@@ -1,0 +1,93 @@
+{
+  "namespace": "zcapm1.db",
+  "definitions": {
+    "zcapm1.db.Sales": {
+      "kind": "entity",
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "region": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "country": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "amount": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "CatalogService": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service",
+      "@path": "/srv"
+    },
+    "CatalogService.Sales": {
+      "kind": "entity",
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "id"
+          },
+          "Label": "ID"
+        },
+        {
+          "Value": {
+            "=": "region"
+          },
+          "Label": "Region"
+        },
+        {
+          "Value": {
+            "=": "country"
+          },
+          "Label": "Country"
+        },
+        {
+          "Value": {
+            "=": "amount"
+          },
+          "Label": "Amount"
+        }
+      ],
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "zcapm1.db.Sales"
+            ]
+          },
+          "columns": [
+            "*"
+          ]
+        }
+      },
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "region": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "country": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "amount": {
+          "type": "cds.Integer"
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v2.12.0",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}
